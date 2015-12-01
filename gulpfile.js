@@ -21,7 +21,7 @@ gulp.task('build', ['clean'], function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch('./js/*', ['build']);
+  gulp.watch(['./public/js/*.js', './public/js/controllers/*.js'], ['build']);
 });
 
 gulp.task('default', ['watch']);

@@ -3,7 +3,11 @@
   <hr>
   <div class="row">
     <div class="col-md-3 col-sm-4 col-xs-12">
-      <img ng-src="{{user.picture}}" width="200">
+      <img ng-src="{{user.picture}}">
+      <p>Other Users:</p>
+      <ul>
+        <li ng-repeat="u in users track by $index">{{u.displayName}}</li>
+      </ul>
     </div>
     <div class="col-md-9 col-sm-8 col-xs-12">
       <h2 class="text-center">Conversations</h2>
