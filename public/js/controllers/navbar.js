@@ -7,4 +7,8 @@ angular.module('socialLogin')
     return $auth.isAuthenticated();
   }
 
+  $scope.logout = function(provider) {
+    $auth.logout();
+  };
+
 }]);

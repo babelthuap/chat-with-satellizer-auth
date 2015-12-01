@@ -7,7 +7,7 @@ angular.module('socialLogin')
     $auth.authenticate(provider)
     .then(function(res) {
       console.log('response:', res);
-      $state.go('home');
+      $state.go('profile');
     })
     .catch(function(err) {
       console.error('error:', err);

@@ -4,11 +4,21 @@ html
     meta(charset='UTF-8')
     title Social Login
     link(rel="stylesheet", href="vendor/bootstrap/dist/css/bootstrap.min.css")
-  body(ng-app='socialLogin')
-    div(ng-controller="navbarCtrl" ng-cloak)
-      button(ui-sref='home') Home
-      button(ui-sref='login' ng-if='!isAuthenticated()') Login
-      button(ui-sref='profile' ng-if='isAuthenticated()') Profile
+  body(ng-app='socialLogin' ng-cloak)
+    .navbar.navbar-default.navbar-static-top(ng-controller='navbarCtrl')
+      .navbar-header
+        a.navbar-brand(ui-sref='home')
+          i.ion-ios7-pulse-strong
+          |  SatChat
+      ul.nav.navbar-nav
+        li(ng-if='isAuthenticated()')
+          a(ui-sref='profile') Profile
+      ul.nav.navbar-nav.pull-right
+        li(ng-if='!isAuthenticated()')
+          a(ui-sref='login') Login
+        li
+          a(ui-sref='home' ng-if='isAuthenticated()' ng-click="logout()") Logout
+
 
     ui-view
 
@@ -17,9 +27,3 @@ html
     script(src='vendor/angular-ui-router/release/angular-ui-router.min.js')
     script(src='vendor/satellizer/satellizer.min.js')
     script(src='dist/bundle.js')
-
-    //- script(src='js/module.js')
-    //- script(src='js/controllers/navbar.js')
-    //- script(src='js/controllers/login.js')
-    //- script(src='js/controllers/home.js')
-    //- script(src='js/controllers/profile.js')

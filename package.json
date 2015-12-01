@@ -1,5 +1,5 @@
 {
-  "name": "socialLogin",
+  "name": "SatChat",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -7,17 +7,9 @@
     "setup": "rm -rf public/vendor node_modules && npm i && bower i",
     "start": "node app.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/CodingHouseFI/social-login.git"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/CodingHouseFI/social-login/issues"
-  },
-  "homepage": "https://github.com/CodingHouseFI/social-login#readme",
   "dependencies": {
     "body-parser": "^1.14.1",
     "express": "^4.13.3",
