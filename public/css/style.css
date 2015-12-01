@@ -6,3 +6,17 @@ img {
   width: 200px;
   border-radius: 6px;
 }
+
+.conversation-preview, .message {
+  border: 1px solid #000;
+  border-radius: 4px;
+  padding: 4px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.newMessage {
+  width: 100%;
+  padding: 4px;
+  border-radius: 4px;
+}

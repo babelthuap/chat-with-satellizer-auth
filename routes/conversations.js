@@ -16,9 +16,19 @@ router.get('/', function(req, res) {
     .populate('messages')
     .populate('participants')
     .exec((err, conversations) => {
-      if (err) res.status(400).send('Error');
+      if (err) return res.status(400).send('Error');
       res.send(conversations);
     });
+});
+
+router.get('/:id', function(req, res) {
+  Conversation.findById(req.params.id)
+  .populate('messages')
+  .populate('participants')
+  .exec((err, conversation) => {
+    if (err) return res.status(400).send('Error');
+    res.send(conversation);
+  });
 });
 
 router.post('/', function(req, res) {
@@ -31,20 +41,12 @@ router.post('/', function(req, res) {
   });
 
   firstMessage.save((err, msg) => {
-    if (err) {
-      res.status(400).send();
-    }
-    else {
-      newConversation.messages = [msg._id]
-      newConversation.save((err, conv) => {
-        if (err) {
-          res.status(400).send(doc);
-        }
-        else {
-          res.send(conv);
-        }
-      });
-    }
+    if (err) return res.status(400).send('Error');
+    newConversation.messages = [msg._id]
+    newConversation.save((err, conv) => {
+      if (err) return res.status(400).send('Error');
+      res.send(conv);
+    });
   });
 
 });

@@ -6,26 +6,27 @@ angular.module('socialLogin')
 
   $scope.user = dataSvc.user;
   $scope.users;
+  $scope.conversations;
 
   if (!$scope.user) {
     dataSvc.getCurrentUser()
-    .then(function(user) {
-      $scope.user = user.data;
-      dataSvc.user = user.data;
+    .then(res => {
+      $scope.user = res.data;
+      dataSvc.user = res.data;
     })
-    .catch(function(err) {
-      console.error(err);
-    })
+    .catch(err => console.error(err));
   }
 
-  dataSvc.getAllUsers()
-  .then(function(users) {
-    console.log("other users:", users);
-    $scope.users = users.data;
+  dataSvc.getOtherUsers()
+  .then(res => $scope.users = res.data)
+  .catch(err => console.error(err));
+
+  dataSvc.getAllConversations()
+  .then(res => {
+    console.log('res.data:', res.data);
+    $scope.conversations = res.data;
   })
-  .catch(function(err) {
-    console.error(err);
-  })
+  .catch(err => console.error(err));
 
   console.log('profileCtrl');
 }]);

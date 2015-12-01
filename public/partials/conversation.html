@@ -1,0 +1,16 @@
+<div class="jumbotron">
+  <div class="text-center">
+    <h1>Conversation</h1>
+    <p>between {{conversation.participants[0].displayName}} and {{conversation.participants[1].displayName}}</p>
+  </div>
+  <hr>
+  <div class="message" ng-repeat="m in conversation.messages">
+    {{participants[m.author]}}:<br>
+    {{m.text}}<br>
+    <em>-- {{displayTime(m.time)}}</em>
+  </div>
+  <input type="text" class="newMessage">
+  <div class="text-right">
+    <button class="btn btn-default">Send</button>
+  </div>
+</div>

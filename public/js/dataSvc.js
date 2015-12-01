@@ -6,6 +6,8 @@ angular.module('socialLogin')
   this.user;
 
   this.getCurrentUser = () => $http.get('/users/me');
-  this.getAllUsers = () => $http.get('/users');
+  this.getOtherUsers = () => $http.get('/users');
 
+  this.getConversationById = id => $http.get(`/conversations/${id}`);
+  this.getAllConversations = () => $http.get('/conversations');
 }]);

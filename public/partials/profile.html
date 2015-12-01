@@ -11,6 +11,10 @@
     </div>
     <div class="col-md-9 col-sm-8 col-xs-12">
       <h2 class="text-center">Conversations</h2>
+      <a class="conversation-preview" ng-repeat="c in conversations track by $index" ui-sref="conversation({id: c._id})" >
+        Between {{c.participants[0].displayName}} and {{c.participants[1].displayName}}
+      </a>
+
     </div>
   </div>
 </div>
