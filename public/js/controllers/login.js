@@ -5,13 +5,8 @@ angular.module('socialLogin')
 
   $scope.authenticate = function(provider) {
     $auth.authenticate(provider)
-    .then(function(res) {
-      console.log('response:', res);
-      $state.go('profile');
-    })
-    .catch(function(err) {
-      console.error('error:', err);
-    })
+    .then(res => $state.go('profile'))
+    .catch(err => console.error('error:', err))
   };
 
 }]);
