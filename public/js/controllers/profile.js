@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('socialLogin')
-.controller('profileCtrl', function($scope, $auth, $state, $http) {
+.controller('profileCtrl', ['$scope', '$auth', '$state', '$http', function($scope, $auth, $state, $http) {
   if (!$auth.isAuthenticated()) return $state.go('home');
 
   $scope.user;
@@ -16,4 +16,4 @@ angular.module('socialLogin')
   })
 
   console.log('profileCtrl');
-});
+}]);

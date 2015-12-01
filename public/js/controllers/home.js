@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('socialLogin')
-.controller('homeCtrl', function($scope, $auth) {
+.controller('homeCtrl', ['$scope', '$auth', function($scope, $auth) {
 
   $scope.logout = function(provider) {
     $auth.logout();
@@ -11,4 +11,4 @@ angular.module('socialLogin')
     return $auth.isAuthenticated();
   }
 
-});
+}]);
