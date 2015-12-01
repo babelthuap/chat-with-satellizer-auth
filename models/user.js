@@ -7,8 +7,6 @@ var jwt = require('jwt-simple');
 
 var Schema = mongoose.Schema;
 
-var User;
-
 var userSchema = Schema({
   displayName: String,
   picture: String,
@@ -26,6 +24,4 @@ userSchema.methods.createJWT = function() {
   return jwt.encode(payload, process.env.JWT_SECRET);
 }
 
-
-User = mongoose.model('User', userSchema);
-module.exports = User;
+module.exports = mongoose.model('User', userSchema);;

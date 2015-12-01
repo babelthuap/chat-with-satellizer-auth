@@ -11,6 +11,12 @@ var app = express();
 var mongoose = require('mongoose');
 mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/socialLogin');
 
+
+var Conversation = require('./models/conversation');
+var Message = require('./models/message');
+var User = require('./models/user');
+
+
 app.set('view engine', 'jade');
 
 // GENERAL MIDDLEWARE
@@ -23,6 +29,7 @@ app.use(express.static('public'));
 app.use('/', require('./routes/index'));
 app.use('/auth', require('./routes/auth'));
 app.use('/users', require('./routes/users'));
+app.use('/conversations', require('./routes/conversations'));
 
 // 404 HANDLER
 app.use(function(req, res){
