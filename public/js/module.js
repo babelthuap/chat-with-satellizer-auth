@@ -4,6 +4,7 @@ let app = angular.module('socialLogin', ['satellizer', 'ui.router']);
 
 app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', function($stateProvider, $urlRouterProvider, $authProvider) {
   $urlRouterProvider.otherwise('/');
+  
   $stateProvider
     .state('home', { url: '/', templateUrl: 'partials/home.html', controller: 'homeCtrl' })
     .state('login', { url: '/login', templateUrl: 'partials/login.html', controller: 'loginCtrl' })

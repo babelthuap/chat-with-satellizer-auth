@@ -4,26 +4,29 @@ html
     meta(charset='UTF-8')
     title Social Login
     link(rel="stylesheet", href="vendor/bootstrap/dist/css/bootstrap.min.css")
+    link(rel="stylesheet", href="vendor/font-awesome/css/font-awesome.min.css")
+    link(rel="stylesheet", href="css/style.css")
   body(ng-app='socialLogin' ng-cloak)
-    .navbar.navbar-default.navbar-static-top(ng-controller='navbarCtrl')
-      .navbar-header
-        a.navbar-brand(ui-sref='home')
-          i.ion-ios7-pulse-strong
-          |  SatChat
-      ul.nav.navbar-nav
-        li(ng-if='isAuthenticated()')
-          a(ui-sref='profile') Profile
-      ul.nav.navbar-nav.pull-right
-        li(ng-if='!isAuthenticated()')
-          a(ui-sref='login') Login
-        li
-          a(ui-sref='home' ng-if='isAuthenticated()' ng-click="logout()") Logout
+    .container
+      .navbar.navbar-default.navbar-static-top(ng-controller='navbarCtrl')
+        .navbar-header
+          a.navbar-brand(ui-sref='home')
+            i.ion-ios7-pulse-strong
+            |  SatChat
+        ul.nav.navbar-nav
+          li(ng-if='isAuthenticated()')
+            a(ui-sref='profile') Profile
+        ul.nav.navbar-nav.pull-right
+          li(ng-if='!isAuthenticated()')
+            a(ui-sref='login') Login
+          li
+            a(ui-sref='home' ng-if='isAuthenticated()' ng-click="logout()") Logout
 
 
-    ui-view
+      ui-view
 
-    script(src='vendor/jquery/dist/jquery.min.js')
-    script(src='vendor/angular/angular.min.js')
-    script(src='vendor/angular-ui-router/release/angular-ui-router.min.js')
-    script(src='vendor/satellizer/satellizer.min.js')
-    script(src='dist/bundle.js')
+      script(src='vendor/jquery/dist/jquery.min.js')
+      script(src='vendor/angular/angular.min.js')
+      script(src='vendor/angular-ui-router/release/angular-ui-router.min.js')
+      script(src='vendor/satellizer/satellizer.min.js')
+      script(src='dist/bundle.js')
