@@ -14,7 +14,7 @@ gulp.task('build', ['clean'], function() {
   gulp.src(['./public/js/*.js', './public/js/controllers/*.js'])
   .pipe(concat('bundle.js'))
   .pipe(babel({
-      presets: ['es2015']
+    presets: ['es2015']
   }))
   .pipe(uglify())
   .pipe(gulp.dest('./public/dist/'));

@@ -3,6 +3,7 @@ html
   head
     meta(charset='UTF-8')
     title Social Login
+    link(rel="stylesheet", href="vendor/bootstrap/dist/css/bootstrap.min.css")
   body(ng-app='socialLogin')
     div(ng-controller="navbarCtrl" ng-cloak)
       button(ui-sref='home') Home
@@ -16,6 +17,7 @@ html
     script(src='vendor/angular-ui-router/release/angular-ui-router.min.js')
     script(src='vendor/satellizer/satellizer.min.js')
     script(src='dist/bundle.js')
+
     //- script(src='js/module.js')
     //- script(src='js/controllers/navbar.js')
     //- script(src='js/controllers/login.js')
