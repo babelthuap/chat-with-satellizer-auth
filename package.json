@@ -5,10 +5,11 @@
   "main": "app.js",
   "scripts": {
     "setup": "rm -rf public/vendor node_modules && npm i && bower i",
-    "start": "node app.js"
+    "start": "node app.js",
+    "postinstall": "bower i"
   },
   "engines": {
-    "node": "5.0.0"
+    "node": "5.1.0"
   },
   "keywords": [],
   "author": "",
