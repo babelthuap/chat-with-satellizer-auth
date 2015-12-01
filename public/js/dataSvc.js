@@ -10,4 +10,8 @@ angular.module('socialLogin')
 
   this.getConversationById = id => $http.get(`/conversations/${id}`);
   this.getAllConversations = () => $http.get('/conversations');
+
+  this.postMessage = (message, id) =>
+    $http.post(`/conversations/${id}`, {message: message});
+
 }]);

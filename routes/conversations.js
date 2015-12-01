@@ -31,6 +31,29 @@ router.get('/:id', function(req, res) {
   });
 });
 
+router.post('/:id', function(req, res) {
+  Conversation.findById(req.params.id, (err, conv) => {
+    if (err) return res.status(400).send('Error');
+
+    console.log('\n\nfound:', conv)
+
+    var newMessage = new Message({
+      author: req.user,
+      text: req.body.message
+    });
+
+    newMessage.save((err, msg) => {
+      if (err) return res.status(400).send('Error');
+      conv.messages.push(msg._id);
+
+      conv.save((err, conv) => {
+        if (err) return res.status(400).send('Error');
+        res.send(conv);
+      });
+    });
+  });
+});
+
 router.post('/', function(req, res) {
   var newConversation = new Conversation();
   newConversation.participants = req.body.participants;

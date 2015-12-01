@@ -9,19 +9,17 @@ angular.module('socialLogin')
 
   dataSvc.getConversationById($stateParams.id)
   .then(res => {
-    console.log("res:", res);
-    $scope.conversation = res.data;
+    console.log("res:", res); // DEBUG
 
+    $scope.conversation = res.data;
     $scope.participants[res.data.participants[0]._id] = res.data.participants[0].displayName;
     $scope.participants[res.data.participants[1]._id] = res.data.participants[1].displayName;
-
-    console.log('$scope.participants:', $scope.participants);
   })
   .catch(err => console.error(err));
 
-  $scope.displayTime = time => {
-    return moment(time).format('MMMM Do YYYY, h:mm:ss a');
-  };
+  $scope.postMessage = newMessage => {
+    dataSvc.postMessage(newMessage, $stateParams.id);
+  }
 
-  console.log('conversationCtrl with ID', $stateParams.id);
+  $scope.displayTime = time => moment(time).fromNow()//.format('MMMM Do YYYY, h:mm:ss a');
 }]);
