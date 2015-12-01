@@ -35,8 +35,6 @@ router.post('/:id', function(req, res) {
   Conversation.findById(req.params.id, (err, conv) => {
     if (err) return res.status(400).send('Error');
 
-    console.log('\n\nfound:', conv)
-
     var newMessage = new Message({
       author: req.user,
       text: req.body.message

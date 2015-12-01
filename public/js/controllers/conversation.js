@@ -7,19 +7,31 @@ angular.module('socialLogin')
   $scope.conversation;
   $scope.participants = {};
 
+  getConversation();
+
+  function getConversation() { 
   dataSvc.getConversationById($stateParams.id)
-  .then(res => {
-    console.log("res:", res); // DEBUG
+    .then(res => {
+      console.log("res:", res); // DEBUG
 
-    $scope.conversation = res.data;
-    $scope.participants[res.data.participants[0]._id] = res.data.participants[0].displayName;
-    $scope.participants[res.data.participants[1]._id] = res.data.participants[1].displayName;
-  })
-  .catch(err => console.error(err));
-
-  $scope.postMessage = newMessage => {
-    dataSvc.postMessage(newMessage, $stateParams.id);
+      $scope.conversation = res.data;
+      $scope.participants[res.data.participants[0]._id] = res.data.participants[0].displayName;
+      $scope.participants[res.data.participants[1]._id] = res.data.participants[1].displayName;
+    })
+    .catch(err => console.error(err));
   }
 
-  $scope.displayTime = time => moment(time).fromNow()//.format('MMMM Do YYYY, h:mm:ss a');
+  $scope.postMessage = newMessage => {
+    if (!newMessage) return;
+
+    dataSvc.postMessage($stateParams.id, newMessage)
+    .then(res => {
+      console.log(res);
+      $state.newMessage = '';
+      getConversation();
+    })
+    .catch(err => console.error(err));
+  }
+
+  $scope.displayTime = time => moment(time).fromNow();
 }]);
