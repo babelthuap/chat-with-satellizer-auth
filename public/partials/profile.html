@@ -6,7 +6,9 @@
       <img ng-src="{{user.picture}}">
       <p>Other Users:</p>
       <ul>
-        <li ng-repeat="u in users track by $index">{{u.displayName}}</li>
+        <li ng-repeat="u in users track by $index">
+          <a href="" ng-click="startConversationWith($index)">{{u.displayName}}</a> <!-- start new conversation -->
+        </li>
       </ul>
     </div>
     <div class="col-md-9 col-sm-8 col-xs-12">
@@ -14,7 +16,6 @@
       <a class="conversation-preview" ng-repeat="c in conversations track by $index" ui-sref="conversation({id: c._id})" >
         Between {{c.participants[0].displayName}} and {{c.participants[1].displayName}}
       </a>
-
     </div>
   </div>
 </div>

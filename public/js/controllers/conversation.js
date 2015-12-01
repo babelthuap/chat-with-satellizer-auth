@@ -12,8 +12,6 @@ angular.module('socialLogin')
   function getConversation() { 
   dataSvc.getConversationById($stateParams.id)
     .then(res => {
-      console.log("res:", res); // DEBUG
-
       $scope.conversation = res.data;
       $scope.participants[res.data.participants[0]._id] = res.data.participants[0].displayName;
       $scope.participants[res.data.participants[1]._id] = res.data.participants[1].displayName;
@@ -26,7 +24,6 @@ angular.module('socialLogin')
 
     dataSvc.postMessage($stateParams.id, newMessage)
     .then(res => {
-      console.log(res);
       $state.newMessage = '';
       getConversation();
     })

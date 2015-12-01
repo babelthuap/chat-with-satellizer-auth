@@ -8,6 +8,8 @@ angular.module('socialLogin')
   $scope.users;
   $scope.conversations;
 
+  getAllConversations();
+
   if (!$scope.user) {
     dataSvc.getCurrentUser()
     .then(res => {
@@ -21,12 +23,18 @@ angular.module('socialLogin')
   .then(res => $scope.users = res.data)
   .catch(err => console.error(err));
 
-  dataSvc.getAllConversations()
-  .then(res => {
-    console.log('res.data:', res.data);
-    $scope.conversations = res.data;
-  })
-  .catch(err => console.error(err));
+  function getAllConversations() {
+    dataSvc.getAllConversations()
+    .then(res => {
+      $scope.conversations = res.data;
+    })
+    .catch(err => console.error(err));
+  }
 
-  console.log('profileCtrl');
+  $scope.startConversationWith = index => {
+    dataSvc.startConversationWith($scope.users[index]._id)
+    .then(getAllConversations)
+    .catch(err => console.error(err));
+  }
+
 }]);
