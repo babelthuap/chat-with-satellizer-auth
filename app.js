@@ -10,11 +10,9 @@ var app = express();
 
 var mongoose = require('mongoose');
 mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/socialLogin');
-
-
-var Conversation = require('./models/conversation');
-var Message = require('./models/message');
-var User = require('./models/user');
+require('./models/conversation');
+require('./models/message');
+require('./models/user');
 
 
 app.set('view engine', 'jade');

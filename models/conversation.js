@@ -5,8 +5,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var conversationSchema = Schema({
-  participants: [{type: Schema.Types.ObjectId, ref: 'users'}],
-  messages: [{type: Schema.Types.ObjectId, ref: 'messages'}]
+  participants: [{type: Schema.Types.ObjectId, ref: 'User'}],
+  messages: [{type: Schema.Types.ObjectId, ref: 'Message'}]
 });
 
 module.exports = mongoose.model('Conversation', conversationSchema);;

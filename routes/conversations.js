@@ -13,7 +13,8 @@ router.use(ensureAuthenticated);
 
 router.get('/', function(req, res) {
   Conversation.find({})
-    // .populate('messages', 'participants')
+    .populate('messages')
+    .populate('participants')
     .exec((err, conversations) => {
       if (err) res.status(400).send('Error');
       res.send(conversations);
