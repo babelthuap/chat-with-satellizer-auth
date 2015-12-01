@@ -7,6 +7,9 @@
     "setup": "rm -rf public/vendor node_modules && npm i && bower i",
     "start": "node app.js"
   },
+  "engines": {
+    "node": "5.0.0"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
